@@ -24,6 +24,8 @@
   </div>
 </template>
 <script>
+import a from "./2-test"
+
 export default {
   components: {},
   props: [],
@@ -45,7 +47,11 @@ export default {
   },
   computed: {},
   watch: {},
-  created() {},
+  created() {
+    console.log('2-2-test', a)
+    a.a = 2
+    console.log('2-2-test', a)
+  },
   mounted() {},
   methods: {
     submitForm() {
