@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <el-button id="toggle-nav" @click="showNav=!showNav">nav</el-button>
+    <div v-show="showNav" id="nav">
       <!-- <router-link to="/">Home</router-link> | -->
       <!-- <router-link to="/about">About</router-link> -->
 
@@ -20,6 +21,7 @@ export default {
   props: [],
   data() {
     return {
+      showNav: true,
       views: [],
     };
   },
@@ -55,9 +57,23 @@ export default {
   color: #2c3e50;
 }
 
+#toggle-nav {
+  z-index: 99999;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 #nav {
+  z-index: 99999;
+  opacity: 0.8;
+
+  position: absolute;
+  top: 0;
+  left: 10%;
   padding: 10px;
-  width: 100%;
+  width: 80%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
