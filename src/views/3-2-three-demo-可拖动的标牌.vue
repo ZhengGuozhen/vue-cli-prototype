@@ -46,8 +46,8 @@ import {
 } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
 
-import dragMatrix from './drag/drag.matrix'
-import dragAbsolute from './drag/drag.absolute'
+import dragMatrix from "../lib/drag/drag.matrix"
+import dragAbsolute from "../lib/drag/drag.absolute"
 
 
 
@@ -164,12 +164,17 @@ export default {
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
+      // @zgz
+      renderer.domElement.style.position = "absolute";
+      renderer.domElement.style.top = "0";
+      renderer.domElement.style.left = "0";
       document.body.appendChild(renderer.domElement);
 
       labelRenderer = new CSS2DRenderer();
       labelRenderer.setSize(window.innerWidth, window.innerHeight);
       labelRenderer.domElement.style.position = "absolute";
-      labelRenderer.domElement.style.top = "0px";
+      labelRenderer.domElement.style.top = "0";
+      labelRenderer.domElement.style.left = "0";
       document.body.appendChild(labelRenderer.domElement);
 
       const controls = new OrbitControls(camera, labelRenderer.domElement);
@@ -214,7 +219,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 
 #app {
   height: 0;

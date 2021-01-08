@@ -146,12 +146,17 @@ export default {
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
+      // @zgz
+      renderer.domElement.style.position = "absolute";
+      renderer.domElement.style.top = "0";
+      renderer.domElement.style.left = "0";
       document.body.appendChild(renderer.domElement);
 
       labelRenderer = new CSS2DRenderer();
       labelRenderer.setSize(window.innerWidth, window.innerHeight);
       labelRenderer.domElement.style.position = "absolute";
-      labelRenderer.domElement.style.top = "0px";
+      labelRenderer.domElement.style.top = "0";
+      labelRenderer.domElement.style.left = "0";
       document.body.appendChild(labelRenderer.domElement);
 
       const controls = new OrbitControls(camera, labelRenderer.domElement);
@@ -200,7 +205,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 
 #app {
   height: 0;
@@ -220,8 +225,10 @@ export default {
   z-index: 999;
 }
 
-body.dragging,
-body.dragging * {
+/* 
+#c0 >>> .dragging,
+#c0 >>> .dragging * {
     cursor: move, move !important;
-}
+} */
+
 </style>

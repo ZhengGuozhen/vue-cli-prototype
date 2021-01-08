@@ -151,6 +151,7 @@ export default {
       renderer.domElement.style.left = container.clientLeft;
       container.appendChild(renderer.domElement);
 
+      // @zgz
       labelRenderer = new CSS2DRenderer();
       labelRenderer.setSize(container.clientWidth, container.clientHeight);
       labelRenderer.domElement.style.position = "absolute";
@@ -196,7 +197,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 
 #app {
   height: 0;

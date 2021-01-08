@@ -39,8 +39,8 @@
       Absolute Drag2
     </div>
 
-    <div id="jsplumb1" class="item">jsplumb1</div>
-    <div id="jsplumb2" class="item">jsplumb2</div>
+    <div id="jsplumb1" class="item-demo-3-4">jsplumb1</div>
+    <div id="jsplumb2" class="item-demo-3-4">jsplumb2</div>
   </div>
 </template>
 <script>
@@ -53,8 +53,8 @@ import {
   CSS2DObject,
 } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
-import dragMatrix from "./drag/drag.matrix";
-import dragAbsolute from "./drag/drag.absolute";
+import dragMatrix from "../lib/drag/drag.matrix";
+import dragAbsolute from "../lib/drag/drag.absolute";
 
 import { jsPlumb } from "jsplumb";
 
@@ -77,11 +77,11 @@ export default {
     // https://chrisdeo.github.io/2019/07/22/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8FDIV%E6%8F%92%E5%85%A5%E9%97%AE%E9%A2%98/
     var fragment = document.createDocumentFragment();
     this.tips = []
-    const length = 1000
+    const length = 200
     for (let i = 0; i < length; i++) {
       const d = document.createElement("div");
       d.id = "tip-" + i;
-      d.className = "item";
+      d.className = "item-demo-3-4";
       d.textContent = "tip-" + i;
 
       // document.body.appendChild(d)
@@ -99,7 +99,7 @@ export default {
     // for (let i = 0; i < 1000; i++) {
     //   const d = document.createElement("div");
     //   d.id = "absoluteDragBox-" + i;
-    //   d.className = "item";
+    //   d.className = "item-demo-3-4";
     //   d.textContent = "absoluteDragBox-" + i;
     //   d.style.top = '200px'
 
@@ -213,12 +213,17 @@ export default {
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
+      // @zgz
+      renderer.domElement.style.position = "absolute";
+      renderer.domElement.style.top = "0";
+      renderer.domElement.style.left = "0";
       document.body.appendChild(renderer.domElement);
 
       labelRenderer = new CSS2DRenderer();
       labelRenderer.setSize(window.innerWidth, window.innerHeight);
       labelRenderer.domElement.style.position = "absolute";
-      labelRenderer.domElement.style.top = "0px";
+      labelRenderer.domElement.style.top = "0";
+      labelRenderer.domElement.style.left = "0";
       document.body.appendChild(labelRenderer.domElement);
 
       const controls = new OrbitControls(camera, labelRenderer.domElement);
@@ -366,8 +371,17 @@ export default {
   methods: {},
 };
 </script>
-
 <style>
+.item-demo-3-4 {
+  width: 50px;
+  border: solid red 1px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+}
+</style>
+<style scoped>
 #app {
   height: 0;
   margin: 0 !important;
@@ -417,14 +431,6 @@ export default {
   left: 0;
 }
 
-.item {
-  width: 50px;
-  border: solid red 1px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 999;
-}
 #jsplumb1 {
   left: 0px;
 }
