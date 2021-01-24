@@ -63,8 +63,8 @@ export default {
 #toggle-nav {
   z-index: 99999;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
 }
 
 #nav {
