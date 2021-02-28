@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import a from "./2-test"
+import a from "./002-test"
 
 export default {
   components: {},
