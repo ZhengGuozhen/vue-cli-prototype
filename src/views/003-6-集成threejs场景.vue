@@ -1,5 +1,4 @@
 // @zgz
-// 嵌入threejs场景
 
 <template>
   <div id="c0" class="c-0">
