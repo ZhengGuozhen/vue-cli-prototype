@@ -306,6 +306,9 @@ export default {
 
       // 坐标系绘图在屏幕的位置不变
       groupCoordinate.position.x = camera.position.x;
+      // 更新物体及其后代的全局变换
+      groupCoordinate.updateMatrixWorld();
+      // 更新刻度
       updateMark();
     }
 
@@ -328,6 +331,9 @@ export default {
 
         // 坐标系绘图在屏幕的位置不变
         groupCoordinate.position.x = camera.position.x;
+        // 更新物体及其后代的全局变换
+        groupCoordinate.updateMatrixWorld();
+        // 更新刻度
         updateMark();
       }
     }
