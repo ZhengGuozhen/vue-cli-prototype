@@ -3,15 +3,20 @@
     <div class='category' v-for="category in data" :key="category.name">
       <div>{{category.name}}</div>
 
-      <div class="items">
+      <div class="items" v-if="category.type==='enum'">
         <div class='item' v-for="item in category.items" :key="item.name">
           <div :style="{background:item.value?'red':'white'} " @click="itemClick(category, item)">{{item.name}}</div>
         </div>
       </div>
 
-      <el-button @click="test">test</el-button>
+      <div class="items" v-if="category.type==='string'">
+        <el-input v-model="category.value"></el-input>
+      </div>
 
     </div>
+
+    <el-button @click="test">test</el-button>
+
   </div>
 </template>
 <script>
@@ -53,6 +58,12 @@ export default {
               value: false,
             }
           ]
+        },
+        {
+          name: '类别3',
+          type: 'string',
+          default: 'aaa',
+          value: 'aaa',
         }
       ]
     };
