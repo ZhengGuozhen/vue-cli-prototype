@@ -5,6 +5,8 @@ import store from './store'
 import './plugins/element.js'
 import './plugins/vxe-table.js'
 
+import './mock';
+
 Vue.config.productionTip = false
 
 new Vue({
